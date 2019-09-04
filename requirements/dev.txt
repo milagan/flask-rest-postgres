@@ -1,0 +1,12 @@
+# Everything the developer needs in addition to the production requirements
+-r prod.txt
+
+# Testing
+pytest
+WebTest
+factory-boy
+# For python 3
+Faker
+# Code Coverage
+python-coveralls
+pytest-cov
