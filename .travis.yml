@@ -15,7 +15,8 @@ before_script:
   - export FLASK_APP="$TRAVIS_BUILD_DIR/main/app.py"
   - export FLASK_DEBUG=1
   - psql -U postgres -c 'create database books;'
-  - psql -U postgres books < ./books.sql
+#  - psql -U postgres books < ./books.sql
+  - pg_restore -d books ./boots.tar -c -U postgres
 script:
   - coverage run --source=main -m pytest --verbose
 after_success:
