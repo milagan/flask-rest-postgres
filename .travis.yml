@@ -5,6 +5,9 @@ cache: pip
 python:
   - 2.7
   - 3.6
+before install:
+  - sudo apt-get update
+  - sudo apt-get install -y --no-install-recommends libpq-dev
 install: pip install -r requirements/dev.txt
 before_script:
   - export FLASK_APP="$TRAVIS_BUILD_DIR/main/app.py"
