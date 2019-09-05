@@ -16,7 +16,7 @@ before_script:
   - export FLASK_DEBUG=1
   - psql -U postgres -c 'create database books;'
 #  - psql -U postgres books < ./books.sql
-  - pg_restore -d books ./boots.tar -c -U postgres
+  - pg_restore -d books ./books.tar -c -U postgres
 script:
   - coverage run --source=main -m pytest --verbose
 after_success:
