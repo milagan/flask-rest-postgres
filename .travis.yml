@@ -2,6 +2,8 @@
 sudo: false  # http://docs.travis-ci.com/user/migrating-from-legacy/
 language: python
 cache: pip
+services:
+  - postgresql
 python:
   - 2.7
   - 3.6
@@ -12,6 +14,8 @@ install: pip install -r requirements/dev.txt
 before_script:
   - export FLASK_APP="$TRAVIS_BUILD_DIR/main/app.py"
   - export FLASK_DEBUG=1
+  - psql -U postgres -c 'create database books;'
+  - psql -U postgres books < ./books.sql
 script:
   - coverage run --source=main -m pytest --verbose
 after_success:
